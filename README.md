@@ -89,12 +89,3 @@ Dữ liệu được chia sẻ dưới dạng các file `.sql` riêng biệt cho
     *   Sau khi import tất cả các file, trong MySQL Workbench, nhấp chuột phải vào schema `pet_db` trong Navigator và chọn "Refresh All".
     *   Mở rộng schema `pet_db`, sau đó mở rộng "Tables". Bạn sẽ thấy các bảng `users`, `pet`, và `event`.
     *   Bạn có thể nhấp chuột phải vào một bảng và chọn "Select Rows - Limit 1000" để xem dữ liệu mẫu.
-
-## (Tùy chọn) Đóng góp
-[Nếu bạn muốn người khác đóng góp, hãy ghi rõ cách thức ở đây, ví dụ:
-*   Nếu bạn phát hiện lỗi hoặc có đề xuất cải thiện, vui lòng tạo một "Issue".
-*   Nếu bạn muốn đóng góp mã nguồn hoặc dữ liệu, vui lòng tạo "Pull Request".
-]
-
-## (Tùy chọn) Liên hệ
-*   Hoặc liên hệ qua [Email của bạn] / [Link mạng xã hội của bạn] (nếu muốn).
