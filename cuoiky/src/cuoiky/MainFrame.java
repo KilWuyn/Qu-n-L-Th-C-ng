@@ -4,13 +4,12 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JTabbedPane;
 import javax.swing.SwingUtilities;
-// Không cần nếu constructor MainFrame không throws
 
 public class MainFrame extends JFrame {
 
-    public MainFrame() { // Bỏ throws SQLException
+    public MainFrame() { 
         setTitle("Hệ Thống Quản Lý Thú Cưng");
-        setSize(1000, 750); // Tăng kích thước để dễ nhìn nhiều tab
+        setSize(1000, 750);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
 
@@ -20,7 +19,7 @@ public class MainFrame extends JFrame {
         try {
             tabbedPane.addTab("Quản Lý Thú Cưng", new PetManagementPanel());
             tabbedPane.addTab("Quản Lý Sự Kiện", new EventManagementPanel());
-        } catch (Exception e) { // Bắt Exception chung nếu constructor Panel ném lỗi
+        } catch (Exception e) { 
             e.printStackTrace();
             JOptionPane.showMessageDialog(this, "Lỗi nghiêm trọng khi khởi tạo panel quản lý: " + e.getMessage(), "Lỗi Khởi Tạo", JOptionPane.ERROR_MESSAGE);
         }

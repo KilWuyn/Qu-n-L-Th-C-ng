@@ -31,7 +31,7 @@ public class EventManagementPanel extends JPanel {
         try {
             conn = DBConnection.getConnection();
             eventDAO = new EventDAO(conn);
-            petDAO = new PetDAO(conn); // Khởi tạo PetDAO ở đây với cùng kết nối
+            petDAO = new PetDAO(conn);
             isInitialized = true; // Đánh dấu khởi tạo thành công
         } catch (SQLException e) {
             e.printStackTrace();
@@ -74,7 +74,7 @@ public class EventManagementPanel extends JPanel {
 
             loadEvents();
         } else {
-            // Ví dụ: Hiển thị một label thông báo lỗi nếu không khởi tạo được
+            // Hiển thị một label thông báo lỗi nếu không khởi tạo được
             add(new javax.swing.JLabel("Không thể tải Event Panel do lỗi kết nối CSDL.", javax.swing.SwingConstants.CENTER), BorderLayout.CENTER);
         }
     }
