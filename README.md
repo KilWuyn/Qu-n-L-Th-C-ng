@@ -53,10 +53,7 @@ Dữ liệu được chia sẻ dưới dạng các file `.sql` riêng biệt cho
 
 ### Các bước thực hiện:
 1.  **Tải các file SQL:**
-    *   Clone repository này về máy của bạn:
-        ```bash
-        ```
-    *   Hoặc tải trực tiếp các file `pet_db_event.sql`, `pet_db_pet.sql`, và `pet_db_users.sql` từ GitHub về một thư mục trên máy.
+    *  tải trực tiếp các file `pet_db_event.sql`, `pet_db_pet.sql`, và `pet_db_users.sql` từ GitHub về một thư mục trên máy.
 
 2.  **Tạo Schema (Database) `pet_db` (nếu chưa có):**
     *   **Sử dụng MySQL Workbench:**
@@ -65,10 +62,14 @@ Dữ liệu được chia sẻ dưới dạng các file `.sql` riêng biệt cho
         3.  Đặt tên cho schema là `pet_db`.
         4.  Nhấn "Apply", sau đó "Apply" một lần nữa trong hộp thoại xác nhận để tạo schema.
     *   **Sử dụng Command Line `mysql`:**
-        Mở terminal hoặc command prompt và chạy lệnh sau (thay `your_mysql_user` bằng tên người dùng MySQL của bạn):
-        ```bash
-        ```
+        Mở terminal hoặc command prompt và chạy lệnh sau (thay `your_mysql_user` bằng tên người dùng MySQL của bạn)
         (Bạn sẽ được yêu cầu nhập mật khẩu MySQL).
+
+3.  **Import dữ liệu từ các file SQL vào Schema `pet_db`:**
+    Do có khả năng tồn tại khóa ngoại giữa các bảng (ví dụ: `pet` tham chiếu đến `users`, `event` tham chiếu đến `pet`), bạn nên import theo thứ tự sau để tránh lỗi:
+    1.  `pet_db_users.sql` (Bảng người dùng/chủ sở hữu)
+    2.  `pet_db_pet.sql` (Bảng thú cưng, có thể tham chiếu đến users)
+    3.  `pet_db_event.sql` (Bảng sự kiện, có thể tham chiếu đến thú cưng)
 
     *   **Sử dụng MySQL Workbench:**
         1.  Mở MySQL Workbench.
@@ -82,10 +83,20 @@ Dữ liệu được chia sẻ dưới dạng các file `.sql` riêng biệt cho
 
     *   **Sử dụng Command Line `mysql`:**
         Mở terminal hoặc command prompt, di chuyển đến thư mục chứa các file `.sql` đã tải về, và chạy các lệnh sau (thay `your_mysql_user` bằng tên người dùng MySQL của bạn):
-        ```bash
-
+         ```bash
+        mysql -u your_mysql_user -p pet_db < pet_db_users.sql
+        mysql -u your_mysql_user -p pet_db < pet_db_pet.sql
+        mysql -u your_mysql_user -p pet_db < pet_db_event.sql
+        ```
+        (Bạn sẽ được yêu cầu nhập mật khẩu MySQL cho mỗi lệnh).
 
 4.  **Kiểm tra:**
     *   Sau khi import tất cả các file, trong MySQL Workbench, nhấp chuột phải vào schema `pet_db` trong Navigator và chọn "Refresh All".
     *   Mở rộng schema `pet_db`, sau đó mở rộng "Tables". Bạn sẽ thấy các bảng `users`, `pet`, và `event`.
     *   Bạn có thể nhấp chuột phải vào một bảng và chọn "Select Rows - Limit 1000" để xem dữ liệu mẫu.
+
+### Sau khi khôi phục thành công:
+Giờ đây bạn đã có cơ sở dữ liệu `pet_db` với dữ liệu mẫu trên máy của mình. Bạn có thể:
+*   Thực hiện các truy vấn SQL để khám phá dữ liệu.
+*   Sử dụng cơ sở dữ liệu này làm backend cho việc phát triển ứng dụng.
+*   Sửa đổi cấu trúc hoặc thêm/xóa/cập nhật dữ liệu cho mục đích học tập và thử nghiệm.
