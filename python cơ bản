@@ -1,0 +1,315 @@
+{
+  "nbformat": 4,
+  "nbformat_minor": 0,
+  "metadata": {
+    "colab": {
+      "provenance": [],
+      "authorship_tag": "ABX9TyOXhvEsiMTAUDLw6eZl9q5c",
+      "include_colab_link": true
+    },
+    "kernelspec": {
+      "name": "python3",
+      "display_name": "Python 3"
+    },
+    "language_info": {
+      "name": "python"
+    }
+  },
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "view-in-github",
+        "colab_type": "text"
+      },
+      "source": [
+        "<a href=\"https://colab.research.google.com/github/KilWuyn/Qu-n-L-Th-C-ng/blob/main/python%20c%C6%A1%20b%E1%BA%A3n\" target=\"_parent\"><img src=\"https://colab.research.google.com/assets/colab-badge.svg\" alt=\"Open In Colab\"/></a>"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "id": "YdK3eavjcdgE"
+      },
+      "outputs": [],
+      "source": [
+        "#Viết chương trình tìm tất cả các số chia hết cho 7 nhưng không phải bội số của 5, nằm trong đoạn 10 và 200 (tính cả 10 và 200). Các số thu được sẽ được in thành chuỗi trên một dòng, cách nhau bằng dấu phẩy.\n",
+        "arr = []\n",
+        "for i in range(10, 201):\n",
+        "    if (i % 7 == 0) and (i % 5 != 0):\n",
+        "        arr.append(str(i))\n",
+        "print (', '.join(arr))"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "#Viết một chương trình tính giai thừa của một số nguyên dương n. Với n được nhập từ bàn phím. Ví dụ, n = 8 thì kết quả đầu ra phải là 1*2*3*4*5*6*7*8 = 40320.\n",
+        "n = int(input(\"Nhập số cần tính giai thừa: \"))\n",
+        "\n",
+        "def giaiThua(n):\n",
+        "    if n == 0:\n",
+        "        return 1\n",
+        "    return n * giaiThua(n - 1)\n",
+        "\n",
+        "print (giaiThua(n))"
+      ],
+      "metadata": {
+        "id": "KxW6OueidtTw"
+      },
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "#Hãy viết chương trình để tạo ra một dictionary chứa (i, i*i), trong đó i là số nguyên từ 1 đến n (bao gồm cả 1 và n), n được nhập từ bàn phím. Sau đó in ra dictionary này ra màn hình. Ví dụ: Giả sử số n là 8 thì đầu ra sẽ là: {1: 1, 2: 4, 3: 9, 4: 16, 5: 25, 6: 36, 7: 49, 8: 64}.\n",
+        "n = int(input(\"Nhập số nguyên dương n = \"))\n",
+        "\n",
+        "d = dict()\n",
+        "for i in range(1, n + 1):\n",
+        "    d[i] = i * i\n",
+        "\n",
+        "print (d)"
+      ],
+      "metadata": {
+        "id": "NcvaL6ged0Ul"
+      },
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "#Viết chương trình Python giải phương trình bậc 2: ax2 + bx + c = 0\n",
+        "import math\n",
+        "\n",
+        "def giaiPTBac2(a, b, c):\n",
+        "    # kiểm tra các hệ số\n",
+        "    if (a == 0):\n",
+        "        if (b == 0):\n",
+        "            print (\"Phương trình vô nghiệm!\");\n",
+        "        else:\n",
+        "            print (\"Phương trình có một nghiệm: x = \", + (-c / b));\n",
+        "        return;\n",
+        "\n",
+        "    # tính delta\n",
+        "    delta = b * b - 4 * a * c;\n",
+        "    # tính nghiệm\n",
+        "    if (delta > 0):\n",
+        "        x1 = (float)((-b + math.sqrt(delta)) / (2 * a));\n",
+        "        x2 = (float)((-b - math.sqrt(delta)) / (2 * a));\n",
+        "        print (\"Phương trình có 2 nghiệm là: x1 = \", x1, \" và x2 = \", x2);\n",
+        "    elif (delta == 0):\n",
+        "        x1 = (-b / (2 * a));\n",
+        "        print(\"Phương trình có nghiệm kép: x1 = x2 = \", x1);\n",
+        "    else:\n",
+        "        print(\"Phương trình vô nghiệm!\");\n",
+        "\n",
+        "# Nhập các hệ số\n",
+        "a = float(input(\"Nhập hệ số bậc 2, a = \"));\n",
+        "b = float(input(\"Nhập hệ số bậc 1, b = \"));\n",
+        "c = float(input(\"Nhập hằng số tự do, Python = \"));\n",
+        "# Gọi hàm giải phương trình bậc 2\n",
+        "giaiPTBac2(a, b, c)"
+      ],
+      "metadata": {
+        "id": "BHyc1_Tkhghl"
+      },
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "#Viết chương trình tìm ước số chung lớn nhất (USCLN) và bội số chung nhỏ nhất (BSCNN) của hai số nguyên dương a và b nhập từ bàn phím.\n",
+        "\n",
+        "def uscln(a, b):\n",
+        "    if (b == 0):\n",
+        "        return a;\n",
+        "    return uscln(b, a % b);\n",
+        "def bscnn(a, b):\n",
+        "    return int((a * b) / uscln(a, b));\n",
+        "\n",
+        "a = int(input(\"Nhập số nguyên dương a = \"));\n",
+        "b = int(input(\"Nhập số nguyên dương b = \"));\n",
+        "#tính USCLN của a và b\n",
+        "print(\"Ước số chung lớn nhất của\", a, \"và\", b, \"là:\", uscln(a, b));\n",
+        "#tính BSCNN của a và b\n",
+        "print(\"Bội số chung nhỏ nhất của\", a, \"và\", b, \"là:\", bscnn(a, b));"
+      ],
+      "metadata": {
+        "id": "XvRg5jbbe7G9"
+      },
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "# Viết chương trình liệt kê tất cả các số nguyên tố nhỏ hơn n. Số nguyên dương n được nhập từ bàn phím\n",
+        "import math\n",
+        "\n",
+        "def isPrimeNumber(n):\n",
+        "    # so nguyen n < 2 khong phai la so nguyen to\n",
+        "    if (n < 2):\n",
+        "        return False;\n",
+        "\n",
+        "    # check so nguyen to khi n >= 2\n",
+        "    squareRoot = int(math.sqrt(n));\n",
+        "    for i in range(2, squareRoot + 1):\n",
+        "        if (n % i == 0):\n",
+        "            return False;\n",
+        "    return True;\n",
+        "\n",
+        "n = int(input(\"Nhập số nguyên dương n = \"));\n",
+        "print (\"Tất cả các số nguyên tố nhỏ hơn\", n, \"là:\");\n",
+        "sb = \"\";\n",
+        "if (n >= 2):\n",
+        "    sb = sb + \"2\" + \" \";\n",
+        "for i in range (3, n+1):\n",
+        "    if (isPrimeNumber(i)):\n",
+        "        sb = sb + str(i) + \" \";\n",
+        "    i = i + 2;\n",
+        "print(sb);"
+      ],
+      "metadata": {
+        "id": "LGvZUw6OfMXW"
+      },
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "# Viết chương trình liệt kê n số nguyên tố đầu tiên trong Python. Số nguyên dương n được nhập từ bàn phím.\n",
+        "import math\n",
+        "\n",
+        "def isPrimeNumber(n):\n",
+        "    # so nguyen n < 2 khong phai la so nguyen to\n",
+        "    if (n < 2):\n",
+        "        return False;\n",
+        "\n",
+        "    # check so nguyen to khi n >= 2\n",
+        "    squareRoot = int(math.sqrt(n));\n",
+        "    for i in range(2, squareRoot + 1):\n",
+        "        if (n % i == 0):\n",
+        "            return False;\n",
+        "    return True;\n",
+        "\n",
+        "n = int(input(\"Nhập số nguyên dương n = \"));\n",
+        "print (n, \"Số nguyên tố đầu tiên là:\");\n",
+        "dem = 0; # đếm số số nguyên tố\n",
+        "i = 2;   # tìm số nguyên tố bắt dầu từ số 2\n",
+        "sb = \"\";\n",
+        "while (dem < n):\n",
+        "    if (isPrimeNumber(i)):\n",
+        "        sb = sb + str(i) + \" \";\n",
+        "        dem = dem + 1;\n",
+        "    i = i + 1;\n",
+        "print(sb);"
+      ],
+      "metadata": {
+        "id": "r6sWUGw3fkOO"
+      },
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "#Viết chương trình liệt kê tất cả số nguyên tố có 5 chữ số trong Python.\n",
+        "import math\n",
+        "\n",
+        "def isPrimeNumber(n):\n",
+        "    # so nguyen n < 2 khong phai la so nguyen to\n",
+        "    if (n < 2):\n",
+        "        return False;\n",
+        "\n",
+        "    # check so nguyen to khi n >= 2\n",
+        "    squareRoot = int(math.sqrt(n));\n",
+        "    for i in range(2, squareRoot + 1):\n",
+        "        if (n % i == 0):\n",
+        "            return False;\n",
+        "    return True;\n",
+        "\n",
+        "print (\"Liệt kê tất cả số nguyên tố có 5 chữ số:\");\n",
+        "dem = 0;\n",
+        "for i in range(10001, 99999):\n",
+        "    if (isPrimeNumber(i)):\n",
+        "        print(i);\n",
+        "        dem = dem + 1;\n",
+        "print(\"Tổng các số nguyên tố có 5 chữ số là:\", dem);"
+      ],
+      "metadata": {
+        "id": "mhTWRzq6fo3p"
+      },
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "#Viết chương trình phân tích số nguyên n thành các thừa số nguyên tố trong Python. Ví dụ: 100 = 2x2x5x5\n",
+        "def phanTichSoNguyen(n):\n",
+        "    i = 2;\n",
+        "    listNumbers = [];\n",
+        "    # phân tích\n",
+        "    while (n > 1):\n",
+        "        if (n % i == 0):\n",
+        "            n = int(n / i);\n",
+        "            listNumbers.append(i);\n",
+        "        else:\n",
+        "            i = i + 1;\n",
+        "    # nếu listNumbers trống thì add n vào listNumbers\n",
+        "    if (len(listNumbers) == 0):\n",
+        "        listNumbers.append(n);\n",
+        "    return listNumbers;\n",
+        "\n",
+        "n = int(input(\"Nhập số nguyên dương n = \"));\n",
+        "# phân tích số nguyên dương n\n",
+        "listNumbers = phanTichSoNguyen(n);\n",
+        "size = len(listNumbers);\n",
+        "sb = \"\";\n",
+        "for i in range(0, size - 1):\n",
+        "    sb = sb + str(listNumbers[i]) + \" x \";\n",
+        "sb = sb + str(listNumbers[size-1]);\n",
+        "# in kết quả ra màn hình\n",
+        "print(\"Kết quả:\", n, \"=\", sb);"
+      ],
+      "metadata": {
+        "id": "HxnCpxnBgPyT"
+      },
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "# Viết chương trình tính tổng của các chữ số của môt số nguyên n trong Python. Số nguyên dương n được nhập từ bàn phím. Với n = 1234, tổng các chữ số: 1 + 2 + 3 + 4 = 10\n",
+        "def totalDigitsOfNumber(n):\n",
+        "    total = 0;\n",
+        "    while (n > 0):\n",
+        "        total = total + n % 10;\n",
+        "        n = int(n / 10);\n",
+        "    return total;\n",
+        "\n",
+        "n = int(input(\"Nhập số nguyên dương n = \"));\n",
+        "print(\"Tổng các chữ số của\", n , \"là\", totalDigitsOfNumber(n));"
+      ],
+      "metadata": {
+        "id": "_2Wi3tRogU7B"
+      },
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "source": [],
+      "metadata": {
+        "id": "plssIWy6fCXm"
+      }
+    }
+  ]
+}
